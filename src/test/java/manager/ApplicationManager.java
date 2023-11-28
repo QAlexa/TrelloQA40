@@ -8,7 +8,11 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
     static WebDriver driver;
+    LoginHelper user;
 
+            public LoginHelper getUser() {
+               return user;
+            }
     public static void init() {
         driver = new ChromeDriver();
         driver.navigate().to("https://trello.com/home");

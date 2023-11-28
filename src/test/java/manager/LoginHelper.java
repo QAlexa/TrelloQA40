@@ -1,6 +1,8 @@
 package manager;
 
 import dto.UserDto;
+import dto.UserDtoLombok;
+import dto.UserDtoWith;
 import org.openqa.selenium.By;
 
 public class LoginHelper extends BaseHelper {
@@ -17,17 +19,70 @@ public class LoginHelper extends BaseHelper {
     By btnSubmitEmailPassword = By.xpath("//button[@id='login-submit']");
     By inputPassword = By.xpath("//input[@id='password']");
     By textBoards = By.xpath("//span[text()='Boards']");
+    By textH5SignUp = By.xpath("//h5[.='Sign up to continue']");
 
-    public void LoginUserDto(UserDto user) {
-        clickBase(btnLoginMainPage);
-        sendKeysBase(inputEmail, user.getEmail());
-        clickBase(btnSubmitEmailPassword);
-        sendKeysBase(inputPassword, user.getPassword());
-        clickBase(btnSubmitEmailPassword);
-
-    }
 
     public boolean validateTextBoardsExist() {
+
         return isTextActualEqualToExpected(textBoards, "Boards");
     }
+    public  boolean validateTextSignUpH5Displays() {
+        return isTextActualEqualToExpected(textH5SignUp,"Sign up to continue");
+    }
+    public void Login(UserDtoLombok user){
+
+       // clickBase(btnLoginMainPage);
+        clickBtnLoginMainPage();
+
+        //sendKeysBase(inputEmail, user.getEmail());
+        printEmailForLogin(user.getEmail());
+
+       // clickBase(btnSubmitEmailPassword);
+        clickBtnSubmitEmailForLogin(user);
+
+        //sendKeysBase(inputPassword, user.getPassword());
+        printPasswordForLogin(user.getPassword());
+
+       // clickBase(btnSubmitEmailPassword);
+        clickBtnSubmitEmailPassword(user);
+
+}
+public void clickBtnLoginMainPage() {
+    clickBase(btnLoginMainPage);
+}
+public void printEmailForLogin(String email) {
+    sendKeysBase(inputEmail, email);
+}
+
+public void printPasswordForLogin(String password) {
+    sendKeysBase(inputPassword,password);
+}
+
+public void clickBtnSubmitEmailForLogin(UserDtoLombok user) {
+    clickBase(btnSubmitEmailPassword);
+}
+public void clickBtnSubmitEmailPassword(UserDtoLombok user) {
+    clickBase(btnSubmitEmailPassword);
+}
+
+
+
+//    public void LoginUserDto(UserDto user) {
+//        clickBase(btnLoginMainPage);
+//        sendKeysBase(inputEmail, user.getEmail());
+//        clickBase(btnSubmitEmailPassword);
+//        sendKeysBase(inputPassword, user.getPassword());
+//        clickBase(btnSubmitEmailPassword);
+//
+//    }
+
+//    public void LoginUserDtoWith(UserDtoWith user) {
+//        clickBase(btnLoginMainPage);
+//        sendKeysBase(inputEmail, user.getEmail());
+//        clickBase(btnSubmitEmailPassword);
+//        sendKeysBase(inputPassword, user.getPassword());
+//        clickBase(btnSubmitEmailPassword);
+//    }
+
+
 }
