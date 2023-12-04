@@ -14,13 +14,13 @@ public class LoginHelper extends BaseHelper {
 //    String boardText = driver.findElement(By.xpath("//span[text()='Boards']")).getText();
 //        Assert.assertEquals(boardText, "Boards", "text not Boards");
 
-    By btnLoginMainPage = By.xpath("//a[contains(@data-uuid, 'login')]");
+   By btnLoginMainPage = By.xpath("//a[contains(@data-uuid, 'login')]");
+
     By inputEmail = By.xpath("//input[@id='username']");
     By btnSubmitEmailPassword = By.xpath("//button[@id='login-submit']");
     By inputPassword = By.xpath("//input[@id='password']");
     By textBoards = By.xpath("//span[text()='Boards']");
     By textH5SignUp = By.xpath("//h5[.='Sign up to continue']");
-
 
     public boolean validateTextBoardsExist() {
 
@@ -64,6 +64,7 @@ public void clickBtnSubmitEmailForLogin(UserDtoLombok user) {
 public void clickBtnSubmitEmailPassword(UserDtoLombok user) {
     clickBase(btnSubmitEmailPassword);
 }
+
 
 
 
